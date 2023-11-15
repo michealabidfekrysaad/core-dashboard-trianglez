@@ -1,0 +1,17 @@
+@import "./varaibles.scss";
+
+.buttonCustomDefault {
+  border-radius: 20px;
+  background-color: $darkBlue;
+  padding: 0px 34px 0px 28px;
+  width: fit-content;
+  height: 48px;
+  color: $white;
+  border-color: unset;
+  border: 0px;
+  cursor: pointer;
+  &:disabled {
+    background-color: $grey;
+    color: $white;
+  }
+}

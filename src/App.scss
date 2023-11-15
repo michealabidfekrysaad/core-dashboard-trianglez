@@ -1,0 +1,14 @@
+@import "./sass/toastify.scss";
+@import "./sass/mainLayout.scss";
+@import "./sass/varaibles.scss";
+@import "./sass/login/login.scss";
+@import "./sass/textBox.scss";
+@import "./sass/buttonCustom.scss";
+
+body {
+  background-color: $themeColor;
+  margin: 0px;
+}
+.App {
+  text-align: center;
+}

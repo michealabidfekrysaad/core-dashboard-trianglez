@@ -1,0 +1,54 @@
+@import "./varaibles.scss";
+
+.main {
+  .side-menu {
+    min-height: 95vh;
+    background-color: $white;
+    transition: width 1.4s ease;
+    .container {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.2rem;
+      padding: 10px;
+      .logo {
+        width: 70px;
+        max-width: 100%;
+        flex-grow: 1;
+      }
+      .arrow {
+        font-weight: bold;
+      }
+    }
+    .links {
+      min-height: 50px;
+      display: flex;
+      background-color: #f6f7ff;
+      align-items: center;
+      margin-top: 5px;
+      padding: 5px 10px;
+      gap: 10px;
+      .nav-link {
+        text-decoration: unset;
+        color: #000000;
+      }
+    }
+    .active-link {
+      border-right: 3px solid $purple;
+    }
+  }
+  .content {
+    transition: width 1.4s ease;
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $white;
+      min-height: 50px;
+      padding: 5px 20px;
+      .head {
+        color: $blue;
+        font-weight: $fontWeight7;
+      }
+    }
+  }
+}
