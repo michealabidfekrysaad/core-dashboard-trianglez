@@ -1,7 +1,7 @@
 // i make this layout bec in some  apps there is many layouts can
 // be used with different design  so here can add another
 
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { useState } from "react";
 import { Navbar } from "../components/Navbar";
 import { SideMenu } from "../components/SideMenu";
@@ -27,7 +27,7 @@ export const MainLayout = ({ children }) => {
         className="content"
       >
         <Navbar />
-        {children}
+        <Box m={3}>{children}</Box>
       </Grid>
     </Grid>
   );

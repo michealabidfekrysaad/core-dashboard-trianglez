@@ -18,8 +18,7 @@ export const ButtonCustom = ({
       onClick={onClick}
       {...props}
     >
-      {hasIcon && hasIcon}
-      {text}
+      {hasIcon && hasIcon} {text}
     </button>
   );
 };

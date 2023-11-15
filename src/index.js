@@ -1,21 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from 'react-redux';
 import "../src/App.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import UserProvider from "./config/providers/UserProvider/UserProvider";
 import ToastifyProvider from "./config/providers/ToastifyProvider/ToastifyProvider";
 import { BrowserRouter } from "react-router-dom";
+import store from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <UserProvider>
-    <ToastifyProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ToastifyProvider>
-  </UserProvider>
+  <Provider store={store}>
+    <UserProvider>
+      <ToastifyProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ToastifyProvider>
+    </UserProvider>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

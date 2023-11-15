@@ -1,8 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import { MainLayout } from "./layouts/Layouts";
 import { Login } from "./pages/login/Login";
+import { Books } from "./pages/Books/Books";
 import { PATH_PAGE } from "./routes/paths";
 import { PrivateRoute } from "./routes/routes";
+import { BookDetails } from "./pages/BookDetails/BookDetails";
 
 const App = () => {
   return (
@@ -15,7 +17,7 @@ const App = () => {
             path={PATH_PAGE.books}
             element={
               <MainLayout>
-                <h1>book appear here</h1>
+                <Books />
               </MainLayout>
             }
           />
@@ -39,7 +41,7 @@ const App = () => {
             path={PATH_PAGE.bookDetails}
             element={
               <MainLayout>
-                <h1>page for show details of book</h1>
+                <BookDetails />
               </MainLayout>
             }
           />
