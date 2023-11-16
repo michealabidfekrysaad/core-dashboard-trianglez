@@ -3,7 +3,7 @@
 .buttonCustomDefault {
   border-radius: 20px;
   background-color: $darkBlue;
-  padding: 0px 28px 0px 28px;
+  padding: 4px 28px 4px 28px;
   width: fit-content;
   height: 40px;
   color: $white;
@@ -14,4 +14,7 @@
     background-color: $grey;
     color: $white;
   }
+}
+.red{
+	background-color: $darkRed;
 }

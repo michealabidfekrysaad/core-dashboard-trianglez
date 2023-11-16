@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Grid, InputAdornment, TextField, Typography } from "@mui/material";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ButtonCustom } from "../../components/ButtonCustom";
@@ -40,6 +40,13 @@ export const Books = () => {
     }, 500),
     []
   );
+
+  useEffect(() => {
+    return () => {
+      //  return the search result to empty to show all books
+      dispatch(searchBook({ searchValue: "" }));
+    };
+  }, []);
 
   const handleSearchChange = (event) => {
     const { value } = event.target;

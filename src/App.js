@@ -3,14 +3,16 @@ import { MainLayout } from "./layouts/Layouts";
 import { Login } from "./pages/login/Login";
 import { Books } from "./pages/Books/Books";
 import { PATH_PAGE } from "./routes/paths";
-import { PrivateRoute } from "./routes/routes";
+import { PrivateRoute, LoggedInUser } from "./routes/routes";
 import { BookDetails } from "./pages/BookDetails/BookDetails";
 
 const App = () => {
   return (
     <div className="App">
       <Routes>
-        <Route path={PATH_PAGE.login} element={<Login />} />
+        <Route path="/" element={<LoggedInUser />}>
+          <Route path={PATH_PAGE.login} element={<Login />} />
+        </Route>
 
         <Route path="/" element={<PrivateRoute />}>
           <Route

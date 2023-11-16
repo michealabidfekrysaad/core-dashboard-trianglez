@@ -9,3 +9,12 @@ export const PrivateRoute = ({ path, element }) => {
   const { User } = useContext(UserContext);
   return isAuthenticated(User) ? <Outlet /> : <Navigate to={PATH_PAGE.login} />;
 };
+
+export const LoggedInUser = ({ path, element }) => {
+  const { User } = useContext(UserContext);
+  return !isAuthenticated(User) ? (
+    <Outlet />
+  ) : (
+    <Navigate to={PATH_PAGE.books} />
+  );
+};
