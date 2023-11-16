@@ -5,6 +5,7 @@ import { Books } from "./pages/Books/Books";
 import { PATH_PAGE } from "./routes/paths";
 import { PrivateRoute, LoggedInUser } from "./routes/routes";
 import { BookDetails } from "./pages/BookDetails/BookDetails";
+import { BookEdit } from "./pages/BookEdit/BookEdit";
 
 const App = () => {
   return (
@@ -35,7 +36,7 @@ const App = () => {
             path={PATH_PAGE.bookEdit}
             element={
               <MainLayout>
-                <h1>page for edit the book</h1>
+                <BookEdit />
               </MainLayout>
             }
           />
