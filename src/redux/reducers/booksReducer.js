@@ -12,6 +12,15 @@ const booksSlice = createSlice({
   reducers: {
     addBook(state, action) {
       state.books.push(action.payload);
+      state.filteredBooks.push(action.payload);
+    },
+    editBook(state, action) {
+      const { id, updatedBookData } = action.payload;
+      const index = state?.books?.findIndex((book) => book.id === id);
+      if (index !== -1) {
+        state.books[index] = { ...state.books[index], ...updatedBookData };
+        state.filteredBooks = { ...state.books[index], ...updatedBookData };
+      }
     },
     removeBook(state, action) {
       state.books = state.books.filter(

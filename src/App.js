@@ -28,7 +28,7 @@ const App = () => {
             path={PATH_PAGE.booksAdd}
             element={
               <MainLayout>
-                <h1>pagea dd books</h1>
+                <BookEdit />
               </MainLayout>
             }
           />

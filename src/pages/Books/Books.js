@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Grid, InputAdornment, TextField, Typography } from "@mui/material";
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ButtonCustom } from "../../components/ButtonCustom";
@@ -34,8 +34,13 @@ export const Books = () => {
   const navigate = useNavigate();
   const classes = useStyles();
 
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
   const debouncedSearch = useCallback(
     debounce((searchValue) => {
+      setRowsPerPage(5);
+      setPage(0);
       dispatch(searchBook({ searchValue }));
     }, 500),
     []
@@ -85,7 +90,12 @@ export const Books = () => {
         />
       </Grid>
       <Grid item xs={12}>
-        <BooksTable />
+        <BooksTable
+          page={page}
+          setPage={setPage}
+          setRowsPerPage={setRowsPerPage}
+          rowsPerPage={rowsPerPage}
+        />
       </Grid>
     </Grid>
   );

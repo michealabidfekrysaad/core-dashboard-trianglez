@@ -6,6 +6,7 @@ export const TextBox = ({
   name = "",
   type = "text",
   placeholder = name,
+  specificHolder = false,
   label = false,
 }) => {
   return (
@@ -15,7 +16,7 @@ export const TextBox = ({
         className="core-input__field"
         type={type}
         name={name}
-        placeholder={placeholder}
+        placeholder={specificHolder ? specificHolder : placeholder}
         {...register}
       />
       {errors[name] && (

@@ -17,14 +17,12 @@ import { toast } from "react-toastify";
 import { removeBook } from "../../redux/reducers/booksReducer";
 import { Modals } from "../../components/Modals";
 
-export const BooksTable = () => {
+export const BooksTable = ({ page, setPage, setRowsPerPage, rowsPerPage }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { filteredBooks } = useSelector((state) => state.books);
 
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
   const [selectedBookId, setSelectedBookId] = useState(null);
   const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
 
@@ -71,7 +69,7 @@ export const BooksTable = () => {
         </TableHead>
         <TableBody>
           {filteredBooks
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map((book, index) => (
               <TableRow key={index}>
                 <TableCell>{book.title}</TableCell>

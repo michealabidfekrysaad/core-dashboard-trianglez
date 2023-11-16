@@ -18,7 +18,7 @@ export const DefaultBooks = [
     ISBN: "978-3-16-148410-0",
     category: "cat-1",
     pagesNum: "1000",
-	hoursRead: "7h",
+    hoursRead: "7h",
   },
   {
     id: 1,
@@ -35,7 +35,7 @@ export const DefaultBooks = [
     ISBN: "978-3-16-148410-1",
     category: "cat-2",
     pagesNum: "1200",
-	hoursRead: "120h",
+    hoursRead: "120h",
   },
   {
     id: 2,
@@ -52,7 +52,7 @@ export const DefaultBooks = [
     ISBN: "978-3-16-148410-3",
     category: "cat-3",
     pagesNum: "10",
-	hoursRead: "50h",
+    hoursRead: "50h",
   },
   {
     id: 3,
@@ -69,7 +69,7 @@ export const DefaultBooks = [
     ISBN: "978-3-16-148410-3",
     category: "cat-3",
     pagesNum: "900",
-	hoursRead: "5h",
+    hoursRead: "5h",
   },
   {
     id: 4,
@@ -86,7 +86,7 @@ export const DefaultBooks = [
     ISBN: "978-3-16-148410-4",
     category: "cat-3",
     pagesNum: "600",
-	hoursRead: "10h",
+    hoursRead: "10h",
   },
   {
     id: 5,
@@ -157,4 +157,38 @@ export const DefaultBooks = [
     hoursRead: "20h",
   },
   // Add more book objects as needed
+];
+
+export const categories = [
+  {
+    id: 1,
+    name: "cat-1",
+  },
+  {
+    id: 2,
+    name: "cat-2",
+  },
+  {
+    id: 3,
+    name: "cat-3",
+  },
+  {
+    id: 4,
+    name: "cat-4",
+  },
+];
+
+export const olderVersions = [
+  {
+    id: 1,
+    name: "1.0",
+  },
+  {
+    id: 2,
+    name: "0.9",
+  },
+  {
+    id: 3,
+    name: "1.4",
+  },
 ];
