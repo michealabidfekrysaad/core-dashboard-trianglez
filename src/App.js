@@ -3,7 +3,7 @@ import { MainLayout } from "./layouts/Layouts";
 import { Login } from "./pages/login/Login";
 import { Books } from "./pages/Books/Books";
 import { PATH_PAGE } from "./routes/paths";
-import { PrivateRoute, LoggedInUser } from "./routes/routes";
+import { PrivateRoute, LoggedInUserRoute } from "./routes/routes";
 import { BookDetails } from "./pages/BookDetails/BookDetails";
 import { BookAddEdit } from "./pages/BookAddEdit/BookAddEdit";
 import { NotFound } from "./pages/NotFound/NotFound";
@@ -12,7 +12,7 @@ const App = () => {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<LoggedInUser />}>
+        <Route path="/" element={<LoggedInUserRoute />}>
           <Route path={PATH_PAGE.login} element={<Login />} />
         </Route>
 

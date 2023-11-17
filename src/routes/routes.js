@@ -10,7 +10,7 @@ export const PrivateRoute = ({ path, element }) => {
   return isAuthenticated(User) ? <Outlet /> : <Navigate to={PATH_PAGE.login} />;
 };
 
-export const LoggedInUser = ({ path, element }) => {
+export const LoggedInUserRoute = ({ path, element }) => {
   const { User } = useContext(UserContext);
   return !isAuthenticated(User) ? (
     <Outlet />
