@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
-import { addBook } from "../../redux/reducers/booksReducer";
+import { addBook, editBook } from "../../redux/reducers/booksReducer";
 import { PATH_PAGE } from "../../routes/paths";
 import { DataInputs } from "./DataInputs";
 import { DataConfirm } from "./DataConfirm";
@@ -20,14 +20,24 @@ const useStyles = makeStyles({
   },
 });
 
-export const BookEdit = () => {
+export const BookAddEdit = () => {
   const { id } = useParams();
 
   const classes = useStyles();
   const [imagePreview, setImagePreview] = useState("");
+  const [pdfPreview, setPdfPreview] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { books } = useSelector((state) => state.books);
+
+  const specificBook = books?.find((b) => +b?.id === +id);
+
+  useEffect(() => {
+    if (!specificBook && id) {
+      navigate(PATH_PAGE.books);
+      toast.success("Book ID not correct");
+    }
+  }, [specificBook, navigate, id]);
 
   const {
     register,
@@ -55,20 +65,55 @@ export const BookEdit = () => {
     },
   });
 
+  useEffect(() => {
+    if (specificBook) {
+      setValue("title", specificBook?.title);
+      setValue("author", specificBook?.author);
+      setValue("category", specificBook?.category);
+      setValue("price", specificBook?.price);
+      setPdfPreview(specificBook?.PDF);
+      setImagePreview(specificBook?.photo);
+      setValue("version", specificBook?.version);
+      setValue("olderVersion", specificBook?.olderVersion);
+      setValue("edition", specificBook?.edition);
+      setValue("ISBN", specificBook?.ISBN);
+      setValue("releaseDate", specificBook?.releaseDate);
+      setValue("brief", specificBook?.brief);
+    }
+  }, [specificBook]);
+
   const onSubmit = (data) => {
-    dispatch(
-      addBook({
-        ...data,
-        id: +books?.length + 1,
-        pagesNum: "1000",
-        hoursRead: "7h",
-        photo: imagePreview,
-        PDF: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      })
-    );
+    if (id) {
+      dispatch(
+        editBook({
+          id,
+          updatedBookData: {
+            ...data,
+            id: id,
+            pagesNum: "1000",
+            hoursRead: "7h",
+            photo: imagePreview,
+            PDF: pdfPreview,
+          },
+        })
+      );
+    } else {
+      dispatch(
+        addBook({
+          ...data,
+          id: +books?.length + 1,
+          pagesNum: "1000",
+          hoursRead: "7h",
+          photo: imagePreview,
+          PDF: pdfPreview,
+        })
+      );
+    }
     navigate(PATH_PAGE.books);
     if (!id) {
       toast.success("Added successfully");
+    } else {
+      toast.success("Updated successfully");
     }
   };
 
@@ -76,7 +121,6 @@ export const BookEdit = () => {
     if (watch("photo")) {
       const reader = new FileReader();
       const file = Object.values(watch("photo"))[0];
-      console.log(file);
       reader.onloadend = () => {
         setImagePreview(reader.result);
       };
@@ -87,12 +131,21 @@ export const BookEdit = () => {
     }
   }, [watch, watch("photo")]);
 
+  useEffect(() => {
+    if (watch("PDF") && Object?.values(watch("PDF"))[0]) {
+      setPdfPreview({
+        fileName: Object.values(watch("PDF"))[0]?.name,
+        fileType: Object.values(watch("PDF"))[0]?.type,
+      });
+    }
+  }, [watch, watch("PDF")]);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Typography variant="h5" component="h5">
-            Edit Book
+            {id ? "Edit" : "Add"} Book
           </Typography>
         </Grid>
         <Grid item xs={12}>
@@ -106,6 +159,8 @@ export const BookEdit = () => {
                   setValue={setValue}
                   clearErrors={clearErrors}
                   watch={watch}
+                  id={id}
+                  pdfPreview={pdfPreview}
                 />
               </Grid>
 
@@ -114,6 +169,7 @@ export const BookEdit = () => {
                   imagePreview={imagePreview}
                   register={register}
                   errors={errors}
+                  id={id}
                 />
               </Grid>
             </Grid>

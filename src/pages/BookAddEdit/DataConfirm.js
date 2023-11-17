@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { iconPath } from "../../constants/Constants";
 import { makeStyles } from "@mui/styles";
 import { ButtonCustom } from "../../components/ButtonCustom";
@@ -12,9 +12,12 @@ const useStyles = makeStyles({
     gap: "10px",
     justifyContent: "flex-end",
   },
+  img: {
+    borderRadius: "10px",
+  },
 });
 
-export const DataConfirm = ({ imagePreview, register, errors }) => {
+export const DataConfirm = ({ imagePreview, register, errors, id }) => {
   const path = iconPath();
   const classes = useStyles();
   const navigate = useNavigate();
@@ -25,7 +28,12 @@ export const DataConfirm = ({ imagePreview, register, errors }) => {
         <div className="image-upload">
           <label className="upload-input" htmlFor="upload-input">
             {imagePreview ? (
-              <img src={imagePreview} alt="Preview" width="200" />
+              <img
+                src={imagePreview}
+                alt="Preview"
+                width="200"
+                className={classes.img}
+              />
             ) : (
               <img src={`${path}bookHolder.jpg`} alt="holder" width="200" />
             )}
@@ -39,7 +47,7 @@ export const DataConfirm = ({ imagePreview, register, errors }) => {
             accept=".jpeg, .jpg, .png"
             style={{ display: "none" }}
             {...register("photo", {
-              required: "Image is required",
+              ...(id ? {} : { required: "Image is required" }),
             })}
           />
           {errors.photo && (

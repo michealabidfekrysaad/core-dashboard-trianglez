@@ -30,6 +30,9 @@
       .nav-link {
         text-decoration: unset;
         color: #000000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
     }
     .active-link {

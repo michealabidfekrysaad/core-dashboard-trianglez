@@ -22,7 +22,6 @@ export const BooksTable = ({ page, setPage, setRowsPerPage, rowsPerPage }) => {
   const dispatch = useDispatch();
 
   const { filteredBooks } = useSelector((state) => state.books);
-
   const [selectedBookId, setSelectedBookId] = useState(null);
   const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
 

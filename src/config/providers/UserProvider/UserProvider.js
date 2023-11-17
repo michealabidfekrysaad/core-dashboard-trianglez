@@ -7,7 +7,6 @@ const UserProvider = ({ children }) => {
   const [User, setUser] = useState(
     JSON.parse(localStorage.getItem("coreAdmin")) || null
   );
-  console.log(User);
 
   const logout = () => {
     setUser(null);

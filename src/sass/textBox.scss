@@ -55,6 +55,7 @@
   box-shadow: unset !important;
   outline: none !important;
 }
+
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -102,11 +103,13 @@ select {
 
 // style for upload image
 .image-upload {
+  cursor: pointer;
   .upload-input {
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 10px;
+	cursor: pointer;
   }
   .upload-icon {
     background-color: $white;

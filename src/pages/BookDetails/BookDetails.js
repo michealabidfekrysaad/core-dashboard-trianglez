@@ -123,7 +123,6 @@ export const BookDetails = () => {
               />
               <ButtonCustom
                 text="Edit"
-                hasIcon="+"
                 onClick={() => navigate(`/books/edit/${+id}`)}
               />
             </Box>

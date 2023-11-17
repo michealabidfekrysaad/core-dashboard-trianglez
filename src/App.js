@@ -5,7 +5,8 @@ import { Books } from "./pages/Books/Books";
 import { PATH_PAGE } from "./routes/paths";
 import { PrivateRoute, LoggedInUser } from "./routes/routes";
 import { BookDetails } from "./pages/BookDetails/BookDetails";
-import { BookEdit } from "./pages/BookEdit/BookEdit";
+import { BookAddEdit } from "./pages/BookAddEdit/BookAddEdit";
+import { NotFound } from "./pages/NotFound/NotFound";
 
 const App = () => {
   return (
@@ -28,7 +29,7 @@ const App = () => {
             path={PATH_PAGE.booksAdd}
             element={
               <MainLayout>
-                <BookEdit />
+                <BookAddEdit />
               </MainLayout>
             }
           />
@@ -36,7 +37,7 @@ const App = () => {
             path={PATH_PAGE.bookEdit}
             element={
               <MainLayout>
-                <BookEdit />
+                <BookAddEdit />
               </MainLayout>
             }
           />
@@ -49,7 +50,7 @@ const App = () => {
             }
           />
 
-          <Route path="*" element={<h1>not found component must appear</h1>} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </div>

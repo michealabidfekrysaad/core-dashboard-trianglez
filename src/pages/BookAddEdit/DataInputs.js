@@ -19,12 +19,13 @@ export const DataInputs = ({
   setValue,
   clearErrors,
   watch,
+  id,
+  pdfPreview,
 }) => {
   const classes = useStyles();
 
   return (
     <>
-      {" "}
       <Box mb={4}>
         <TextBox
           register={register("title", {
@@ -96,9 +97,7 @@ export const DataInputs = ({
       <Box mb={4}>
         <div className="core-input">
           <label htmlFor="pdfInput" className="file-input-label">
-            {watch("PDF") && Object?.values(watch("PDF"))[0]
-              ? Object.values(watch("PDF"))[0]?.name
-              : "Book Pdf"}
+            {pdfPreview?.fileName || "Book pdf *"}
           </label>
           <input
             type="file"
@@ -106,7 +105,7 @@ export const DataInputs = ({
             accept=".pdf"
             className="file-input"
             {...register("PDF", {
-              required: "Please upload a PDF file",
+              ...(id ? {} : { required: "Book pdf  is required" }),
             })}
           />{" "}
           {errors.PDF && (
@@ -187,6 +186,7 @@ export const DataInputs = ({
             type="date"
             {...register("releaseDate")}
             placeholder="Book Release Date"
+            onKeyDown={(e) => e.preventDefault()}
           />
           {errors.releaseDate && (
             <span className="core-input__field-error">

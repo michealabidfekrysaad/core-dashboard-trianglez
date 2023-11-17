@@ -14,11 +14,13 @@ export const SideMenu = ({ setCollapse, collapse }) => {
         </div>
       </div>
       <div
-        className={`links ${useMatch(`${PATH_PAGE.books}/*`) ? "active-link" : ""}`}
+        className={`links ${
+          useMatch(`${PATH_PAGE.books}/*`) ? "active-link" : ""
+        }`}
       >
-        <img src={`${path}book.jpg`} alt="logo" />
         <NavLink to={PATH_PAGE.books} className="nav-link">
-          {true && "Books"}
+          <img src={`${path}book.jpg`} alt="logo" />
+          {collapse && "Books"}
         </NavLink>
       </div>
     </>
